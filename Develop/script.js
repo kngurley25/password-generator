@@ -1,5 +1,7 @@
 // Assignment code here
 
+var generatePassword = function() {
+
 // prompt for password length
 var promptLength = window.prompt("Choose the quantity of characters for your password. Choose a number between 8 and 128.");
 console.log("Password length will be " + promptLength + " characters long.");
@@ -77,9 +79,9 @@ var characterSelect = {
 
 // function to generate password
 
-var password = generatePassword (length, trueLower, trueUpper, trueNumeric, trueSpecial)
+var password = xxx (length, trueLower, trueUpper, trueNumeric, trueSpecial)
 
-function generatePassword (length, lowercase, uppercase, numeric, special) {
+function xxx (length, lowercase, uppercase, numeric, special) {
   var genPassword = "";
   
   // verify which type of characters are selected
@@ -101,11 +103,10 @@ function generatePassword (length, lowercase, uppercase, numeric, special) {
       genPassword += characterSelect[character]();
     })
   }
-
   console.log(genPassword);
   return genPassword;
 }
-
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
