@@ -1,6 +1,6 @@
 // Assignment code here
 
-var generatePassword = function() {
+function generatePassword() {
 
 // prompt for password length
 var promptLength = window.prompt("Choose the quantity of characters for your password. Choose a number between 8 and 128.");
@@ -79,10 +79,10 @@ var characterSelect = {
 
 // function to generate password
 
-var password = xxx (length, trueLower, trueUpper, trueNumeric, trueSpecial)
+var finalPassword = passwordGen (length, trueLower, trueUpper, trueNumeric, trueSpecial)
 
-function xxx (length, lowercase, uppercase, numeric, special) {
-  var genPassword = "";
+function passwordGen (length, lowercase, uppercase, numeric, special) {
+  var password = "";
   
   // verify which type of characters are selected
   var typeCount = lowercase + uppercase + numeric + special;
@@ -92,7 +92,7 @@ function xxx (length, lowercase, uppercase, numeric, special) {
   // console.log(typeArray);
   
   if (typeCount === 0) {
-    genPassword = "No characters selected. Please try again.";
+    password = "No characters selected. Please try again.";
   }
 
   // loop through each type of character selected
@@ -100,12 +100,13 @@ function xxx (length, lowercase, uppercase, numeric, special) {
     typeArray.forEach(type => {
       var character = Object.keys(type)[0];
       // console.log(character);
-      genPassword += characterSelect[character]();
+      password += characterSelect[character]();
     })
   }
-  console.log(genPassword);
-  return genPassword;
+  console.log(password);
+  return password;
 }
+return finalPassword;
 }
 
 // Get references to the #generate element
