@@ -98,16 +98,19 @@ function generatePassword() {
     // console.log(typeArray);
     
     if (typeCount === 0) {
+      console.log("No characters selected. Please try again.");
       password = "No characters selected. Please try again.";
     }
 
     // loop through each type of character selected
+    else {
     for (var i = 0; i < length; i += typeCount) {
       typeArray.forEach(type => {
         var character = Object.keys(type)[0];
         // console.log(character);
         password += characterSelect[character]();
       })
+    }
     }
     console.log("Your password is: " + password);
     return password;
