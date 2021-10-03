@@ -27,7 +27,7 @@ var promptUpper = window.confirm("Would you like to include UPPERCASE values? Se
     else {
       console.log("Password will NOT include UPPERCASE letters.");
     }
-    var trueUpper = (promptUpper)
+    var trueUpper = (promptUpper);
 
 var promptNumeric = window.confirm("Would you like to include NUMERIC values? Select OK for YES, CANCEL for NO.");
     if (promptNumeric) {
@@ -36,7 +36,7 @@ var promptNumeric = window.confirm("Would you like to include NUMERIC values? Se
     else {
       console.log("Password will NOT include NUMERIC values.");
     }
-    var trueNumeric = (promptNumeric)
+    var trueNumeric = (promptNumeric);
 
   var promptSpecial = window.confirm("Would you like to include SPECIAL characters? Select OK for YES, CANCEL for NO.");
     if (promptSpecial) {
@@ -45,7 +45,7 @@ var promptNumeric = window.confirm("Would you like to include NUMERIC values? Se
     else {
       console.log("Password will NOT include SPECIAL characters.");
     }
-    var trueSpecial = (promptSpecial)
+    var trueSpecial = (promptSpecial);
 
 // console.log(trueLower, trueUpper, trueNumeric, trueSpecial);
 
@@ -77,7 +77,7 @@ var characterSelect = {
 
 // function to generate password
 
-var finalPassword = generatePassword (length, trueLower, trueUpper, trueNumeric, trueSpecial) 
+var password = generatePassword (length, trueLower, trueUpper, trueNumeric, trueSpecial)
 
 function generatePassword (length, lowercase, uppercase, numeric, special) {
   var genPassword = "";
@@ -87,20 +87,23 @@ function generatePassword (length, lowercase, uppercase, numeric, special) {
   var typeArray = [{lowercase}, {uppercase}, {numeric}, {special}].filter(
     item => Object.values(item)[0]
   );
-  console.log(typeArray);
+  // console.log(typeArray);
   
   if (typeCount === 0) {
-    return "No characters selected. Please try again.";
+    genPassword = "No characters selected. Please try again.";
   }
 
   // loop through each type of character selected
-  for (var i = 0; i < length; i++) {
+  for (var i = 0; i < length; i += typeCount) {
     typeArray.forEach(type => {
       var character = Object.keys(type)[0];
-      console.log(character);
+      // console.log(character);
       genPassword += characterSelect[character]();
     })
   }
+
+  console.log(genPassword);
+  return genPassword;
 }
 
 
@@ -113,6 +116,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+
 }
 
 // Add event listener to generate button
