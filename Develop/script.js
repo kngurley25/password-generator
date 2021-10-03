@@ -49,28 +49,6 @@ var promptNumeric = window.confirm("Would you like to include NUMERIC values? Se
 
 // console.log(trueLower, trueUpper, trueNumeric, trueSpecial);
 
-// function to generator password
-
-var finalPassword = generatePassword (length, trueLower, trueUpper, trueNumeric, trueSpecial) 
-
-function generatePassword (length, lowercase, uppercase, numeric, special) {
-  var genPassword = "";
-  var typeCount = lowercase + uppercase + numeric + special;
-
-  var typeArray = [{lowercase}, {uppercase}, {numeric}, {special}].filter(
-    item => Object.values(item)[0]
-  );
-  console.log(typeArray);
-
-}
-
-var characterSelect = {
-  lowercase: genLowercase,
-  uppercase: genUppercase,
-  numeric: genNumeric,
-  special: genSpecial,
-}
-
 // generate random number from ASCII char code range of values
 var randomNumber = function(min, max) {
   var value = Math.floor(Math.random()*(max-min)+min);
@@ -89,7 +67,42 @@ var genNumeric = function () {
 var genSpecial = function () {
   return String.fromCharCode(randomNumber(33,47));
 }
- 
+
+var characterSelect = { 
+  lowercase: genLowercase,
+  uppercase: genUppercase,
+  numeric: genNumeric,
+  special: genSpecial
+};
+
+// function to generate password
+
+var finalPassword = generatePassword (length, trueLower, trueUpper, trueNumeric, trueSpecial) 
+
+function generatePassword (length, lowercase, uppercase, numeric, special) {
+  var genPassword = "";
+  
+  // verify which type of characters are selected
+  var typeCount = lowercase + uppercase + numeric + special;
+  var typeArray = [{lowercase}, {uppercase}, {numeric}, {special}].filter(
+    item => Object.values(item)[0]
+  );
+  console.log(typeArray);
+  
+  if (typeCount === 0) {
+    return "No characters selected. Please try again.";
+  }
+
+  // loop through each type of characters selected
+  for (var i = 0; i < length; i += typeCount) {
+    typeArray.forEach(type => {
+      var character = Object.keys(type)[0];
+      console.log (character);
+      genPassword += characterSelect[character]();
+    });
+  }
+}
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
