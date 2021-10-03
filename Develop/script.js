@@ -93,13 +93,13 @@ function generatePassword (length, lowercase, uppercase, numeric, special) {
     return "No characters selected. Please try again.";
   }
 
-  // loop through each type of characters selected
-  for (var i = 0; i < length; i += typeCount) {
+  // loop through each type of character selected
+  for (var i = 0; i < length; i++) {
     typeArray.forEach(type => {
       var character = Object.keys(type)[0];
-      console.log (character);
+      console.log(character);
       genPassword += characterSelect[character]();
-    });
+    })
   }
 }
 
