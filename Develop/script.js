@@ -1,18 +1,23 @@
 // Assignment code here
 
+// function to generate password
 function generatePassword() {
 
 // prompt for password length
-var promptLength = window.prompt("Choose the quantity of characters for your password. Choose a number between 8 and 128.");
-console.log("Password length will be " + promptLength + " characters long.");
-var length = parseInt(promptLength);  
-
-  // validate prompt for password length
+var passLength = function () {
+  var promptLength = window.prompt("Choose the quantity of characters for your password. Choose a number between 8 and 128.");
+  console.log("Password length will be " + promptLength + " characters long.");
+  
+    // validate prompt for password length
     if (promptLength < 8 || promptLength > 128 || promptLength === "" || promptLength === null) {
       window.alert("Response is not a valid option. Enter value between 8 and 128.");
+    return passLength();
     }
+  return promptLength;
+  }
+var length = passLength();
 
-// prompt for character selections 
+// prompts for character selections 
 var promptLower = window.confirm("Would you like to include LOWERCASE letters? Select OK for YES, CANCEL for NO.");
     if (promptLower) {
       console.log("Password will include LOWERCASE letters.");
@@ -70,6 +75,7 @@ var genSpecial = function () {
   return String.fromCharCode(randomNumber(33,47));
 }
 
+// object key reference for generated random numbers
 var characterSelect = { 
   lowercase: genLowercase,
   uppercase: genUppercase,
@@ -77,8 +83,7 @@ var characterSelect = {
   special: genSpecial
 };
 
-// function to generate password
-
+// function to select characters
 var finalPassword = passwordGen (length, trueLower, trueUpper, trueNumeric, trueSpecial)
 
 function passwordGen (length, lowercase, uppercase, numeric, special) {
