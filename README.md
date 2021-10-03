@@ -13,4 +13,4 @@ An application in which a user can generate a random password based on user sele
 https://kngurley25.github.io/password-generator/
 
 ## Image
-![screenshot](password-generator_demo.png)
+![screenshot](./demo.png)
